@@ -19,7 +19,7 @@ class ServerHealthCheck():
         
 
     def obtain_ip(self):
-        print("__NS_LOOKUP____________________________________________")
+        print("__LOOKUP____________________________________________")
         currnet_ip = socket.gethostbyname(self.base_url)
         print("ip: "+currnet_ip)
         print("FQDN: "+socket.getfqdn(self.base_url))
@@ -45,7 +45,7 @@ class ServerHealthCheck():
              print("server "+ self.base_url+": is DOWN !!!")
 
     def obtain_http_info(self):
-       print("\n\n"+"__SSL/TLS INFO____________________________________________")
+        print("__SSL/TLS INFO____________________________________________")
         
         req = Request(self.url_path)
         try:
