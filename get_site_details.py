@@ -19,9 +19,19 @@ class ServerHealthCheck():
         
 
     def obtain_ip(self):
-    	currnet_ip = socket.gethostbyname(self.base_url)
-    	print("ip: "+currnet_ip)
-    	return currnet_ip
+        print("__LOOKUP____________________________________________")
+        currnet_ip = socket.gethostbyname(self.base_url)
+        print("ip: "+currnet_ip)
+        print("FQDN: "+socket.getfqdn(self.base_url))
+        ip_list = []
+        # 0,0,0,0  is for (family, type, proto, canonname, sockaddr)
+        socket_info = socket.getaddrinfo(self.base_url,0,0,0,0)
+        for result in socket_info:
+            # result.index()
+            ip_list.append(result[4][0])
+            print(result[4][0])
+        ip_list = list(set(ip_list))
+        return currnet_ip
 
     def ping_host(self):
         #ping reesult
