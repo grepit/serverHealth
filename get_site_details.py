@@ -23,14 +23,15 @@ class ServerHealthCheck():
         currnet_ip = socket.gethostbyname(self.base_url)
         print("ip: "+currnet_ip)
         print("FQDN: "+socket.getfqdn(self.base_url))
-        ip_list = []
+        distinct_ips = []
         # 0,0,0,0  is for (family, type, proto, canonname, sockaddr)
         socket_info = socket.getaddrinfo(self.base_url,0,0,0,0)
         for result in socket_info:
-            # result.index()
-            ip_list.append(result[4][0])
-            print(result[4][0])
-        ip_list = list(set(ip_list))
+            ns_ip = result[4][0]
+            if distinct_ips.count(ns_ip)==0:
+                distinct_ips.append(ns_ip)
+                print(ns_ip)
+        distinct_ips = list(set(distinct_ips))
         return currnet_ip
 
     def ping_host(self):
