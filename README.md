@@ -1,12 +1,12 @@
 # Site Health
 
-### What does this doe ?
-This script is very useful for when you just to do a health check on a remote server. It does the followings:
+### What does this do ?
+This script is very useful for when you just want to do a health check on a remote server. It does the followings:
   - NSLOOKUP 
   - PING to see if the site is up 
   - Certificate/SSL/TLS info
 
-This is test with Python 3.7, on Mac.
+This was tested with Python 3.7, on Mac.
 
 Limitation:
   - Expectes cname or DNS (IP is not accepted currently but working on it to make this available)
